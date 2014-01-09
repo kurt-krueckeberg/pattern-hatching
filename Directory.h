@@ -21,7 +21,7 @@ class Directory : public Node {
 
   public:
 
-     // nested iterator classes
+     // nested stl-compliant forward iterator classes. They iterate the entire Directoy tree structure in order.
      class DirectoryIterator : public std::iterator<std::forward_iterator_tag, Node *> { 
    
           friend class Directory;
@@ -29,7 +29,7 @@ class Directory : public Node {
           
           std::stack< iterators_pair >  iters_stack;
           
-          Node *pCurrentNode;            
+          Node *pCurrentNode;   // TODO: Change to iterators_pair& ?         
           Directory *pDirectory;  // This is the top level directory which will be iterated.
                   
         public:
@@ -53,12 +53,11 @@ class Directory : public Node {
           bool operator!=(const DirectoryIterator& x) const;
      };
 
-     // nested iterator class
      class ConstDirectoryIterator : public std::iterator<std::forward_iterator_tag, const Node *> { 
 
           friend class Directory;
 
-           DirectoryIterator inner_iter; // fwd operations here, using "const_cast<Directory *>(this)->method()"            
+           DirectoryIterator inner_iter; 
         public:
                 
           explicit ConstDirectoryIterator(const Directory & dir); 

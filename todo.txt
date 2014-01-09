@@ -1,0 +1,1 @@
+Can, should, pCurrentNode in DirectoryIterator be changed to DirectoryIterator::iterators_pair *?
