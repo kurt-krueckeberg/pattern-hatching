@@ -11,7 +11,8 @@ using namespace std;
 
 int main(int argc, char** argv) 
 {
-    long file_size = 1000;   
+    long file_size = 1000; // we hardcode the size
+    
     try {
         
         File *ptop_f1 = new File(string("top-File1"), string("12-12-2013"), file_size);
@@ -32,7 +33,7 @@ int main(int argc, char** argv)
            
         Directory *psubdir_lower1 = mkdir(&top, "subdir-mid/subdir-lower1");
         
-        // Node *psubdir_lower1 = psubdir_mid->getChild(0); 
+        /* Node *psubdir_lower1 = psubdir_mid->getChild(0); // alternative to line above. */
 
         File  *psubdir_lower1_f1 = new File(string("subdir-lower1-File1"), string("12-12-2013"), file_size);
         
@@ -83,7 +84,7 @@ int main(int argc, char** argv)
 
         top.print(); 
         
-        cout << "\n ====== using external iterators to print. Also using SuffixPrintVisitor ==== \n" << endl;
+        cout << "\n ====== using Directory::iterator external iterator to print. SuffixPrintVisitor used to append Node type. ==== \n" << endl;
         
         Directory::iterator iter_current = top.begin();
         Directory::iterator iter_end = top.end();
@@ -117,8 +118,7 @@ int main(int argc, char** argv)
             
           cout <<  e.what();
     }
-    
- 
+   
     return 0;
 }
 

@@ -6,11 +6,11 @@ class Link : public Node {
 
    private:
       Node *pSubject;
+      Node *operator->();
 
    public:
       Link(const std::string& name, Node *p);
       Node *getRealSubject() const;
-      Node *operator->();
       
     // fwd all other operations to pSubject
 
@@ -72,5 +72,4 @@ inline void Link::accept(Visitor& v)
 {
     return getRealSubject()->accept(v);
 }
-
 #endif
