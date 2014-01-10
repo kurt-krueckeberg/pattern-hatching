@@ -1,14 +1,19 @@
 #ifndef SuffixPrintVisitor_h_239472934
 #define SuffixPrintVisitor_h_239472934
 #include "Visitor.h"
-#include <iostream>
-
+#include <iosfwd>
+#include <ostream>
 class File;  // forward declarations
 class Directory;
 
 class SuffixPrintVisitor : public Visitor {
-
+    
+     std::ostream& ostr; 
+     
  public:
+     
+    SuffixPrintVisitor(std::ostream& o)  : ostr(o) {}
+    
     void visit(const File *pFile);
     void visit(const Directory *pDir);
     
@@ -16,11 +21,11 @@ class SuffixPrintVisitor : public Visitor {
 
 inline void SuffixPrintVisitor::visit(const File *pFile)
 {
-    std::cout << '@';
+    ostr << '@';
 }
 
 inline void SuffixPrintVisitor::visit(const Directory *pDir)
 {
-    std::cout << "/";
+    ostr << "/";
 }
 #endif

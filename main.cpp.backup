@@ -10,6 +10,24 @@
 
 using namespace std;
 
+// TODO: use for_each() )
+class OutputFunctor {
+    ostream& ostr;
+    SuffixPrintVisitor spv;
+    
+public:
+    
+    OutputFunctor(ostream& o, const SuffixPrintVisitor& s) : ostr(o), spv(s) {}
+    
+    void operator()(Node& n)
+    {
+        ostr <<  n.getName(); 
+        n.accept(spv); 
+        ostr << endl;
+    }
+ };
+
+
 int main(int argc, char** argv) 
 {
     long file_size = 1000; // we hardcode the size
@@ -90,8 +108,12 @@ int main(int argc, char** argv)
         Directory::iterator iter_current = top.begin();
         Directory::iterator iter_end = top.end();
         
-        SuffixPrintVisitor spv(cout);
-                        
+        SuffixPrintVisitor spv;
+        OutputFunctor ofunctor(cout, spv);
+        
+        for_each(iter_current, iter_end, ofunctor);
+        
+        /*
         for (;iter_current != iter_end; ++iter_current) {
             
               cout <<  iter_current->getName(); 
@@ -99,12 +121,12 @@ int main(int argc, char** argv)
               
               cout << endl;
         }
-                
+         */ 
+        
         cout << "\n ===== Testing Directory::const_iterator. Also using SuffixPrintVisitor  ======\n";
         
         const Directory& const_top = top;
         
-        // This is not working
         Directory::const_iterator const_iter_current = const_top.begin();
         Directory::const_iterator const_iter_end = const_top.end();
 
@@ -112,6 +134,7 @@ int main(int argc, char** argv)
               
               cout <<  iter_current->getName(); 
               iter_current->accept(spv); 
+              
               cout << endl;
         }
             
