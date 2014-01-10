@@ -34,11 +34,10 @@ class File : public Node {
     {
         return file_size;
     }
-
-    virtual void accept(Visitor &v)
+    
+    virtual void accept(Visitor &v) const //++
     {
-         v.visit(this);
+         v.visit(this); // implies that visit() has a prototype of "visit(const Node&)"
     }
-
 };
 #endif

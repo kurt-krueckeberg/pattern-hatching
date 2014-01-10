@@ -55,7 +55,7 @@ public:
 	throw node_logic_error("This class does not support the getSize operation");
     }
 
-    virtual void accept(Visitor& v) = 0;
+    virtual void accept(Visitor& v) const = 0; //++ add const version
     
     friend std::ostream& operator<<(std::ostream& ostr, const Node& c); 
         

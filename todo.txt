@@ -1,1 +1,2 @@
 Can, should, pCurrentNode in DirectoryIterator be changed to DirectoryIterator::iterators_pair *?
+const_iterator in main.cpp is not working.

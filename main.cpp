@@ -104,14 +104,14 @@ int main(int argc, char** argv)
         
         const Directory& const_top = top;
         
-        // This is not working
+        // TODO: This is not working
         Directory::const_iterator const_iter_current = const_top.begin();
         Directory::const_iterator const_iter_end = const_top.end();
 
         for (;const_iter_current != const_iter_end; ++const_iter_current) {
               
-              cout <<  iter_current->getName(); 
-              iter_current->accept(spv); 
+              cout <<  const_iter_current->getName(); 
+              const_iter_current->accept(spv); 
               cout << endl;
         }
             

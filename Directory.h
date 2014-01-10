@@ -115,13 +115,12 @@ class Directory : public Node {
      
     long getSize() const throw(node_logic_error);
 
-    void accept(Visitor& v);
+    void accept(Visitor& v) const;
 
     ~Directory();
-    
 };
 
-inline void Directory::accept(Visitor& v)
+inline void Directory::accept(Visitor& v) const
 {
    v.visit(this);
 }
