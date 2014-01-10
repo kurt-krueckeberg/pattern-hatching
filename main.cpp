@@ -104,7 +104,6 @@ int main(int argc, char** argv)
         
         const Directory& const_top = top;
         
-        // TODO: This is not working
         Directory::const_iterator const_iter_current = const_top.begin();
         Directory::const_iterator const_iter_end = const_top.end();
 
