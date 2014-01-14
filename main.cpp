@@ -91,7 +91,7 @@ int main(int argc, char** argv)
         Directory::iterator iter_end = top.end();
         
         SuffixPrintVisitor spv(cout);
-                        
+                                
         for (;iter_current != iter_end; ++iter_current) {
             
               cout <<  iter_current->getName(); 

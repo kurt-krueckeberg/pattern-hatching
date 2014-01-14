@@ -46,7 +46,7 @@ Node *find(std::string& name, Node *pCurrent)
   Node *pChild = 0;
 
   // getChild(int) returns 0 if no child found. 
-  for (int i = 0; pChild = pCurrent->getChild(i); i++) {
+  for (int i = 0; (pChild = pCurrent->getChild(i)); i++) {
 
        if (name == pChild->getName())  {
              
