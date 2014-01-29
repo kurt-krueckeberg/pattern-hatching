@@ -21,7 +21,7 @@ Node *Directory::getChild(int i) throw(node_logic_error, out_of_range)
     
     Node *pNode = 0;
     
-    for(int index = 0;  iter != iter_end; ++iter, ++index) {
+    for(auto index = 0;  iter != iter_end; ++iter, ++index) {
         
            pNode = *iter;    
            
