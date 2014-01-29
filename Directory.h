@@ -18,7 +18,7 @@ class Directory : public Node {
     friend class DirectoryIterator;
     friend class ConstDirectoryIterator;
     template<typename F> void DoRecursive(F& f, const Directory *pdir=0, std::string path=""); 
-
+ 
   public:
 
      // nested stl-compliant forward iterator classes. They iterate the entire Directoy tree structure in order.
@@ -91,7 +91,7 @@ class Directory : public Node {
     
     Directory(const std::string& dir_name, const std::string& created);
     
-    void print(Directory *pdir=0, std::string path= "") const;
+    void print(std::ostream&, Directory *pdir=0, std::string path= "") const;
 
     template<typename F> void traverse(F& f);
 

@@ -167,7 +167,7 @@ Directory::~Directory()
   top/dir2/dir2_f1
   top/top_f1
  */ 
-void Directory::print(Directory *pdir, string path) const
+void Directory::print(ostream& ostr, Directory *pdir, string path) const
 {
     pdir = (pdir != 0) ? pdir : const_cast<Directory *>(this);
     
@@ -178,7 +178,7 @@ void Directory::print(Directory *pdir, string path) const
                 
     path += dir_name + "/";
         
-    cout << path << "\n";
+    ostr << path << "\n";
 
     for (; list_iter != end_iter; ++list_iter) {
         
@@ -187,11 +187,11 @@ void Directory::print(Directory *pdir, string path) const
          if (dynamic_cast<Directory *>(pNode)) {
 
                Directory *p = static_cast<Directory *>(pNode);
-               print(p, path);
+               print(ostr, p, path);
                
          } else { 
              
-            cout << path << pNode->getName() << "\n"; 
+            ostr << path << pNode->getName() << "\n"; 
          }   
     }
     

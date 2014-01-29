@@ -83,7 +83,7 @@ int main(int argc, char** argv)
                 
         cout << "\n ===== top.print() =========== \n" << endl;
 
-        top.print(); 
+        top.print(cout); 
         
         cout << "\n ====== using external iterator Directory::iterator to loop over composite print to stdou and SuffixPrintVisitor to append Node type. ==== \n" << endl;
         
