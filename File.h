@@ -24,7 +24,14 @@ class File : public Node {
     {
         return name;
     }
-    
+
+    // preliminary code
+    virtual unsigned int getProtection() const  throw(node_logic_error)
+    {
+        return 0;	
+    }
+
+   
     virtual std::string getDateCreated() const  throw(node_logic_error)
     {
         return date_created;

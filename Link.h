@@ -15,7 +15,7 @@ class Link : public Node {
     // fwd all other operations to pSubject
 
     void adopt(Node* p) throw(node_logic_error);
-    void remove(Node *pnode) throw(node_logic_error, std::invalid_argument);
+    void orphan(Node *pnode) throw(node_logic_error, std::invalid_argument);
     Node *getChild(int i)  throw(node_logic_error, std::out_of_range);
  
     std::string getName() const  throw(node_logic_error);
@@ -43,9 +43,9 @@ inline void Link::adopt(Node* p) throw(node_logic_error)
     return getRealSubject()->adopt(p); 
 }
 
-inline void Link::remove(Node *pnode) throw(node_logic_error, std::invalid_argument)
+inline void Link::orphan(Node *pnode) throw(node_logic_error, std::invalid_argument)
 {
-     return getRealSubject()->remove(pnode);
+     return getRealSubject()->orphan(pnode);
 }
 
 inline Node *Link::getChild(int i)  throw(node_logic_error, std::out_of_range)

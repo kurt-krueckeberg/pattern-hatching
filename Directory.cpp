@@ -58,7 +58,7 @@ long Directory::getSize() const throw(node_logic_error)
 /*
  * 
  */
-void Directory::remove(Node *pNode) throw(node_logic_error, invalid_argument)
+void Directory::orphan(Node *pNode) throw(node_logic_error, invalid_argument)
 {
     // make sure it exists
     list<Node *>::iterator iter = nodeList.begin();

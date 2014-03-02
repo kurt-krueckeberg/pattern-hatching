@@ -101,8 +101,14 @@ class Directory : public Node {
     void adopt(Node *pnode) throw(node_logic_error);
     Node *getChild(int i)  throw(node_logic_error, std::out_of_range);
     
-    void remove(Node *pnode) throw(node_logic_error, std::invalid_argument);
-  
+    void orphan(Node *pnode) throw(node_logic_error, std::invalid_argument);
+
+    // preliminary code
+    virtual unsigned int getProtection() const  throw(node_logic_error)
+    {
+        return 0;	
+    }
+
     std::string getName() const throw(node_logic_error)
     {
         return name;

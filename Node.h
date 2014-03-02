@@ -7,6 +7,7 @@
 #include <string>
 #include <exception>
 #include <stdexcept>  
+#include <iosfwd>
 class Directory;
 class Visitor;
 
@@ -30,7 +31,7 @@ public:
       throw node_logic_error("This class does not support the add operation");
     }
 
-    virtual void remove(Node *pnode) throw(node_logic_error, std::invalid_argument)
+    virtual void orphan(Node *pnode) throw(node_logic_error, std::invalid_argument)
     {
 	throw node_logic_error("This class does not support the remove operation");
     }
@@ -44,7 +45,13 @@ public:
     {
 	throw node_logic_error("This class does not support the getName operation");
     }
- 
+
+    // preliminary code
+    virtual unsigned int getProtection() const  throw(node_logic_error)
+    {
+	throw node_logic_error("This class does not support the getProtection operation");
+    }
+
     virtual std::string getDateCreated() const throw(node_logic_error)
     {
 	throw node_logic_error("This class does not support the getDateCreated operation");
@@ -62,7 +69,17 @@ public:
     Node() {};
 
     virtual ~Node() {};
-   
+
+    virtual void streamIn(const std::istream& ) throw(node_logic_error)
+    {
+	throw node_logic_error("This class does not support the streamIn(istream&)");
+    }
+ 
+    virtual void streamOut(std::ostream& ) const throw(node_logic_error)
+    {
+	throw node_logic_error("This class does not support the streamOut(ostream&) operation");
+    }
+ 
 };
 
 inline std::ostream& operator<<(std::ostream& ostr, const Node& c) 
